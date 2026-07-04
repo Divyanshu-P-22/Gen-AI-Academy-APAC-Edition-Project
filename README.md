@@ -65,12 +65,5 @@ This project is optimized for direct deployment via Streamlit Community Cloud.
 3. Deploy directly from the `app.py` file.
 4. Add your `GEMINI_API_KEY` to the App Settings -> Secrets.
 
-## 📋 Hackathon Deliverables Checklist
-- [x] **Working Prototype:** Streamlit Community Cloud App.
-- [x] **GitHub Repo:** This repository.
-- [ ] **Presentation Deck:** (To be added to `docs/` folder)
-- [ ] **Demo Video:** (To be linked here)
-- [x] **Brief Description:** Included in this README.
-
 ---
 *Built with ❤️ by a 4th-year B.Tech Engineering student.*
