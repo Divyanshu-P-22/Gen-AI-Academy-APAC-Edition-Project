@@ -1,5 +1,3 @@
----
-
 ## 🛡️ UrbanIoT Threat Intelligence & Safety Monitor
 
 **An AI-powered Decision Intelligence Platform designed for privacy-preserving smart city monitoring and rapid threat response.** Built for the **GenAI APAC Edition Academy Hackathon (Track 1)**, this platform bridges traditional Deep Learning (for pattern recognition) with modern Large Language Models (for cognitive translation). It analyzes real-time structural and environmental metadata to detect security anomalies, translating complex data spikes into plain-English, actionable protocols for city stakeholders.
@@ -9,8 +7,6 @@
 Modern smart cities generate massive amounts of infrastructure telemetry. Monitoring this manually is a bottleneck, but inspecting deep-packet data or video feeds violates citizen privacy.
 
 This engine solves both by monitoring **pure metadata** (vibration, noise, crowd density flows). It utilizes an LSTM neural network to flag baseline deviations with **93% accuracy**, and leverages Google's Gemini API to automatically generate professional dispatch alerts—ensuring public safety while maintaining strict data privacy.
-
----
 
 ## 🧠 Core Architecture
 
