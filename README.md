@@ -1,10 +1,10 @@
 ---
 
-# 🛡️ UrbanIoT Threat Intelligence & Safety Monitor
+## 🛡️ UrbanIoT Threat Intelligence & Safety Monitor
 
 **An AI-powered Decision Intelligence Platform designed for privacy-preserving smart city monitoring and rapid threat response.** Built for the **GenAI APAC Edition Academy Hackathon (Track 1)**, this platform bridges traditional Deep Learning (for pattern recognition) with modern Large Language Models (for cognitive translation). It analyzes real-time structural and environmental metadata to detect security anomalies, translating complex data spikes into plain-English, actionable protocols for city stakeholders.
 
-# 🚀 The Problem It Solves
+## 🚀 The Problem It Solves
 
 Modern smart cities generate massive amounts of infrastructure telemetry. Monitoring this manually is a bottleneck, but inspecting deep-packet data or video feeds violates citizen privacy.
 
@@ -65,7 +65,6 @@ pip install -r requirements.txt
 
 ```text
 GEMINI_API_KEY=your_actual_api_key_here
-
 ```
 
 **4. Boot the Dashboard:**
@@ -90,7 +89,7 @@ The application will launch in your default web browser at `http://localhost:850
 
 ## 👨‍💻 Author
 
-**Divyanshu Prajapat** *B.Tech Student | Cybersecurity & Deep Learning Enthusiast* Focusing on vulnerability analysis, secure architecture, and practical AI applications.
+**Divyanshu Prajapat** - *B.Tech Student | Cybersecurity & Deep Learning Enthusiast* Focusing on vulnerability analysis, secure architecture, and practical AI applications.
 
 ---
 
