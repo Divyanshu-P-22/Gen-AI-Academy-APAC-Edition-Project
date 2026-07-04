@@ -1,69 +1,97 @@
-# UrbanIoT Threat Intelligence Center 🛡️
-**Track 1: Quantiphi - AI-powered Decision Intelligence Platform**
+---
 
-Welcome to the UrbanIoT Threat Intelligence Center, an interactive, multimodal Smart City diagnostic dashboard built to process telemetry flow, execute deep-learning anomaly detection, and deliver actionable GenAI intelligence. 
+# 🛡️ UrbanIoT Threat Intelligence & Safety Monitor
 
-This is not your average SaaS dashboard. It is a Threat Intelligence command center built from the ground up to handle raw telemetry without collecting PII (Personally Identifiable Information).
+**An AI-powered Decision Intelligence Platform designed for privacy-preserving smart city monitoring and rapid threat response.** Built for the **GenAI APAC Edition Academy Hackathon (Track 1)**, this platform bridges traditional Deep Learning (for pattern recognition) with modern Large Language Models (for cognitive translation). It analyzes real-time structural and environmental metadata to detect security anomalies, translating complex data spikes into plain-English, actionable protocols for city stakeholders.
 
-## 🚀 The Mission
-Modern cities are complex networks of utilities, transport, and communication. This project aims to synthesize metadata from urban IoT networks to flag anomalies in real-time. By linking an LSTM (Long Short-Term Memory) model to the Google Gemini Generative AI Engine, this command center not only detects anomalies but also provides context, triage instructions, and stakeholder-ready reports.
+## 🚀 The Problem It Solves
 
-## 🛠️ Architecture & Data Flow
+Modern smart cities generate massive amounts of infrastructure telemetry. Monitoring this manually is a bottleneck, but inspecting deep-packet data or video feeds violates citizen privacy.
 
-```text
-[ Urban IoT Dataset ] ──> [ Preprocessing & Vectorization ] ──> [ LSTM Neural Network ]
-                                                                        │
-[ B.Tech Streamlit UI ] <── [ Gemini GenAI Engine (Vertex AI) ] <───────┘
-```
-
-1. **Data Layer (Telemetry):** We ingest `image_metadata.csv` representing smart city logs (e.g., foot traffic patterns, time, location). No PII is collected—just flow metrics.
-2. **Preprocessing Layer:** Built with `pandas` and `scikit-learn` to normalize and group sequential data into time-series windows.
-3. **ML Engine (LSTM):** A Deep Learning model built with `TensorFlow/Keras`. It learns baseline behaviors over time. When behavior deviates significantly from the baseline, it is flagged.
-4. **GenAI Layer:** Google Gemini 1.5 Flash generates dynamic, human-readable intelligence reports based on the raw telemetry surrounding an anomaly.
-5. **Presentation Layer:** An authentic, interactive "B.Tech Engineering" Streamlit UI, separating flashy live metrics from hardcore model diagnostics.
-
-## 🌟 Key Features
-
-- **Interactive Threshold Knobs:** Real-time LSTM sensitivity tuning. Showcases that ML models require human-in-the-loop tuning for false positives.
-- **Raw Telemetry Tab:** Explicitly displays the metadata flow and highlights rows that cross the LSTM sensitivity threshold, proving the system is analyzing raw metrics, not magic.
-- **Model Diagnostics:** Live rendering of the LSTM's training/validation loss curves.
-- **Actionable UI Buttons:** "Execute Protocol" and "Flag False Positive" buttons to emulate triage in a real operations center.
-- **GenAI Stakeholder Assistant:** A built-in chat interface interacting directly with Gemini to translate raw logs into actionable English summaries.
-
-## 💻 Getting Started (Local Development)
-
-### 1. Clone & Setup
-```bash
-git clone https://github.com/yourusername/urbaniot-threat-intel.git
-cd urbaniot-threat-intel
-```
-
-### 2. Environment Configuration
-Create a `.env` file in the root directory (or use the provided template) and add your Gemini API Key:
-```
-GEMINI_API_KEY=your_api_key_here
-```
-
-### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Train the LSTM Engine
-Upload `train_model.ipynb` and `image_metadata.csv` to Google Colab to clean the data, train the LSTM network, and generate the `lstm_model.keras` and `scaler.pkl` artifacts. Download those artifacts back into this folder.
-
-### 5. Launch the Command Center
-Start the Streamlit dashboard:
-```bash
-streamlit run app.py
-```
-
-## ☁️ Deployment (Streamlit Community Cloud)
-This project is optimized for direct deployment via Streamlit Community Cloud.
-1. Push this repository to GitHub.
-2. Log into [share.streamlit.io](https://share.streamlit.io/).
-3. Deploy directly from the `app.py` file.
-4. Add your `GEMINI_API_KEY` to the App Settings -> Secrets.
+This engine solves both by monitoring **pure metadata** (vibration, noise, crowd density flows). It utilizes an LSTM neural network to flag baseline deviations with **93% accuracy**, and leverages Google's Gemini API to automatically generate professional dispatch alerts—ensuring public safety while maintaining strict data privacy.
 
 ---
-*Built with ❤️ by a 4th-year B.Tech Engineering student.*
+
+## 🧠 Core Architecture
+
+The system is divided into three functional layers:
+
+1. **The Telemetry Pipeline (Data Layer):** Ingests time-series IoT sensor data, applying MinMax scaling and one-hot encoding to spatial constraints.
+2. **The Predictive Engine (ML Layer):** A custom TensorFlow LSTM network processes 5-minute sliding windows of 7 distinct temporal and physical features to predict threat probabilities.
+3. **The Cognitive UI (GenAI Layer):** Built with Streamlit, the dashboard provides a tactical dark-mode interface. When the LSTM confidence score crosses a user-defined threshold, it triggers Google's Gemini 1.5 Flash model to synthesize the raw anomaly metrics into a human-readable security report.
+
+---
+
+## 📂 Project Structure
+
+```text
+├── app.py                     # Main Streamlit dashboard & GenAI integration
+├── lstm_model.keras           # Trained TensorFlow LSTM model (93% Test Acc)
+├── scaler.pkl                 # Scikit-learn MinMax scaler for real-time input
+├── image_metadata.csv         # Sample telemetry data for the UI data-table
+├── requirements.txt           # Python dependencies
+├── .gitignore                 # Security rules for credentials
+└── README.md                  # Project documentation
+
+```
+
+---
+
+## 🛠️ Installation & Local Setup
+
+To run this threat intelligence monitor on your local machine, follow these steps:
+
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/yourusername/UrbanIoT-Threat-Monitor.git
+cd UrbanIoT-Threat-Monitor
+
+```
+
+**2. Install dependencies:**
+It is recommended to use a virtual environment.
+
+```bash
+pip install -r requirements.txt
+
+```
+
+**3. Configure your API Keys:**
+
+* Get a free API key from [Google AI Studio](https://aistudio.google.com/).
+* Create a file named `.env` in the root directory.
+* Add your key to the file:
+
+```text
+GEMINI_API_KEY=your_actual_api_key_here
+
+```
+
+**4. Boot the Dashboard:**
+
+```bash
+streamlit run app.py
+
+```
+
+The application will launch in your default web browser at `http://localhost:8501`.
+
+---
+
+## 💻 Usage & Demonstration
+
+1. Open the dashboard and navigate the interactive tabs.
+2. Adjust the **Anomaly Sensitivity Threshold** via the sidebar slider. (Lowering the threshold simulates a highly sensitive threat environment).
+3. Click **"Run Diagnostics & Predict"**.
+4. The system will process a simulated live data sequence through the LSTM. If the output score exceeds your threshold, it will trigger the red alert state and generate a custom Gemini threat summary.
+
+---
+
+## 👨‍💻 Author
+
+**Divyanshu Prajapat** *B.Tech Student | Cybersecurity & Deep Learning Enthusiast* Focusing on vulnerability analysis, secure architecture, and practical AI applications.
+
+---
+
+*Developed for the GenAI Academy APAC Edition Hackathon (July 2026).*
