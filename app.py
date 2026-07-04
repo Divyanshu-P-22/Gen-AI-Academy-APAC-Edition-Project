@@ -54,7 +54,7 @@ except:
 
 if API_KEY:
     genai.configure(api_key=API_KEY)
-    llm_model = genai.GenerativeModel('gemini-1.5-flash-latest')
+    llm_model = genai.GenerativeModel('models/gemini-1.5-flash')
 else:
     llm_model = None
 
