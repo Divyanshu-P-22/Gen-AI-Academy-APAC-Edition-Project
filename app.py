@@ -64,7 +64,7 @@ if API_KEY:
             break
 
     # Initialize the model using the dynamically discovered name
-    llm = genai.GenerativeModel(working_model)
+    llm_model = genai.GenerativeModel(working_model)
 else:
     llm_model = None
 
