@@ -54,7 +54,17 @@ except:
 
 if API_KEY:
     genai.configure(api_key=API_KEY)
-    llm_model = genai.GenerativeModel('models/gemini-1.5-flash')
+    # --- AUTO-DISCOVER AVAILABLE GEMINI MODEL ---
+    working_model = 'gemini-1.5-flash' # Default fallback
+
+    # Scan the API for the exact name of the Flash model available to your key
+    for m in genai.list_models():
+        if 'generateContent' in m.supported_generation_methods and 'flash' in m.name:
+            working_model = m.name
+            break
+
+    # Initialize the model using the dynamically discovered name
+    llm = genai.GenerativeModel(working_model)
 else:
     llm_model = None
 
