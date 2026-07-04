@@ -47,7 +47,11 @@ st.markdown("""
 
 # --- Initialization ---
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
+try:
+    API_KEY = st.secrets["GEMINI_API_KEY"]
+except:
+    API_KEY = os.getenv("GEMINI_API_KEY")
+
 if API_KEY:
     genai.configure(api_key=API_KEY)
     llm_model = genai.GenerativeModel('gemini-1.5-flash')
@@ -150,7 +154,10 @@ with tab1:
     
     st.markdown("---")
     st.subheader("Temporal Traffic Analysis")
-    fig = px.line(df, x='timestamp', y='person_count', color='location_id', title="Crowd Density Over Time")
+    
+    # Sort by location and timestamp to prevent line graph zigzagging
+    df_plot = df.sort_values(['location_id', 'timestamp'])
+    fig = px.line(df_plot, x='timestamp', y='person_count', color='location_id', title="Crowd Density Over Time")
     
     # Highlight anomalies
     anomalies = df[df['Flagged_Anomaly']]
@@ -179,8 +186,11 @@ with tab1:
                 Translate these complex logs into a simple, actionable English summary for a city stakeholder.
                 Do not expose raw JSON. Just give the insights.
                 """
-                response = llm_model.generate_content(prompt)
-                st.info(response.text)
+                try:
+                    response = llm_model.generate_content(prompt)
+                    st.info(response.text)
+                except Exception as e:
+                    st.error(f"GenAI Error: Could not generate report. ({str(e)})")
         else:
             st.error("Gemini API not configured. Please add GEMINI_API_KEY to .env file.")
 
